@@ -1,0 +1,536 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* --------------------------------------------------------- fonts --------------------------------------------------------- */
+.noto-sans-thick {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.roboto-slab-thin {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  color:rgb(66, 66, 66);
+}
+.text-white{
+  color: white;
+}
+.text-cyan{
+  color: cyan;
+}
+/* --------------------------------------------------------- button --------------------------------------------------------- */
+.btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 15px 2rem ;
+  margin: 1rem;
+  font-weight: bolder;
+  font-size: medium;
+  text-decoration: none;
+  
+}
+.btn-large {
+  padding:1.2rem 3rem;
+  font-size: 2rem;
+}
+.btn-wide{
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.btn-yellow {
+  background-color: #f2b538;
+}
+.btn-yellow:hover {
+  background-color: rgb(214, 214, 7);
+}
+.btn-blue {
+  background-color: rgb(3, 192, 218);
+}
+.btn-blue:hover {
+  background-color: rgb(0, 240, 240);
+}
+@media screen and (max-width:600px) {
+  .btn-large{
+    padding: .7rem 1.8rem;
+    font-size: 1.5rem;
+  }
+  .btn{
+    padding: 0.3rem 1rem;
+    margin: .3rem;
+  }
+}
+/* --------------------------------------------------------- Navigation --------------------------------------------------------- */
+.nav-bar {
+  background-color: #1F1F30;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+.nav-container{
+  
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: -15rem;
+  margin-right: -15rem;
+}
+.nav-logo {
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  height: 3rem;
+  width: auto;
+  margin: 1rem;
+  margin-right: 0px;
+}
+.nav-items {
+  display: flex;
+  justify-content: end;
+  margin-right: 1rem;
+}
+.nav-items a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  margin: 1rem;
+}
+@media screen and (max-width:600px) {
+  .nav-container{
+    margin: auto -1rem;
+  }
+  .nav-items a{
+    font-size: medium;
+    margin: .8rem;
+  }
+  .nav-items button{
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------- Home --------------------------------------------------------- */
+#home {
+  background-image: url("images/home_bg.png");
+  background-size: cover;
+  padding: 3rem;
+}
+.home-container {
+  margin-left: 15rem;
+}
+.home-heading {
+  line-height: 6rem;
+  margin-top: 5rem;
+  margin-bottom: 0px;
+  font-size: 5rem;
+  color: #f2b538;
+}
+.home-subheading {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+.home-no-fee {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 3rem;
+  color: white;
+}
+
+@media screen and (max-width:1200px) {
+  .home-container{
+    margin-left: 5rem;
+  }
+}
+@media screen and (max-width:600px) {
+  .home-container{
+    margin-left: .2rem;
+  }
+  .home-heading{
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  .home-subheading{
+    font-size: 2rem;
+  }
+  .home-no-fee{
+    font-size: 1.5rem;
+  }
+}
+/* --------------------------------------------------------- Music distro--------------------------------------------------------- */
+#music-distro {
+  background-color: whitesmoke;
+}
+.music-distro-container {
+  text-align: center;
+  margin:3rem 18rem;
+}
+.music-distro-heading {
+  font-size: 4rem;
+  color: rgb(49, 49, 49);
+}
+.music-distro-content{
+  font-size: 2rem;
+  color: gray;
+}
+.music-distro-muted{
+  font-size: medium;
+  color: gray;
+}
+
+.music-distro-apps img{
+  height: 4rem;
+  margin: 2rem;
+}
+
+@media screen and (max-width:1200px) {
+  .music-distro-container{
+    margin: 2rem 10rem;
+  }
+  .music-distro-heading{
+    font-size: 3rem;
+  }
+  .music-distro-content{
+    font-size: 1.5;
+  }
+  .music-distro-apps img{
+    height: 3rem;
+    margin: 1.7rem;
+  }
+
+}
+@media screen and (max-width:600px) {
+  .music-distro-container{
+    margin: 1rem 3rem;
+  }
+  .music-distro-heading{
+    font-size: 2rem;
+  }
+  .music-distro-content{
+    font-size: 1.3rem;
+  }
+  .music-distro-apps img{
+    height: 2rem;
+    margin: 1rem;
+  }
+}
+
+/* --------------------------------------------------------- Subscribe --------------------------------------------------------- */
+
+.subscribe-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 4rem 15rem;
+}
+.subscribe-heading{
+  font-size: 4rem;
+  color: white;
+}
+.subscribe-email{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.subscribe-email input{
+  height: 3rem;
+  padding-left:2rem;
+  margin: 1rem;
+  margin-right: 0px;
+  width: 30rem;
+  border-radius: 8px;
+}
+.subscribe-bg{
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+}
+@media screen and (max-width:1200px) {
+  .subscribe-container{
+    margin:1rem 8rem;
+  }
+  .home-subheading{
+    font-size: 2.8rem;
+  }
+    .subscribe-bg{
+    height: 100vh;
+    width: auto;
+  }
+}
+@media screen and (max-width:600px) {
+  .subscribe-container{
+    margin:1rem 1rem;
+  }
+  .subscribe-heading{
+    font-size: 2rem;
+  }
+.subscribe-email input{
+  height: 1.5rem;
+  width: 15rem;
+  margin: .3rem;
+}
+}
+
+/* ---------------------------------------------------------why--------------------------------------------------------- */
+
+#why{
+  background-image: url('images/CDB_Campaigns_0522Rotor_Homepage_Texture.jpg');
+}
+.why-container{
+  margin: 4rem 15rem;
+  text-align: center;
+}
+.why-icon-img{
+  height: 10rem;
+  margin-bottom: 4rem;
+
+}
+.whys{
+display:flex;
+}
+.why-img{
+  height: 5rem;
+}
+.why-col{
+    width: 20rem;
+    text-align: center;
+    padding: 5rem;
+}
+.why-col-heading{
+  color:  #f2b538;
+  font-size: 2rem;
+  margin-bottom: 0px;
+}
+.why-col-content{
+  font-size: 1.4rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+}
+@media screen and (max-width:1400px) {
+
+  .why-container{
+    margin: 5rem 7rem;
+  }
+  .why-col{
+    padding: .5rem;
+    align-self: center;
+  }
+
+}
+
+@media screen and (max-width:750px) {
+  .why-container{
+    margin: 4rem 1rem;
+  }
+  .why-icon-img{
+    height: 8rem;
+  }
+  .whys{
+    flex-direction: column;
+    
+  }
+
+}
+
+/* --------------------------------------------------------- testimonials --------------------------------------------------------- */
+
+#testimonials{
+  background-color: #f2b538
+}
+.testimonials-container{
+  margin: 4rem 10rem;
+  text-align: center;
+}
+
+.testimonials-heading{
+  font-size: 3.5rem;
+  color: rgb(49, 49, 49);;
+}
+.testimonials-list{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.testimonial{
+  margin: 4rem;
+}
+@media screen and (max-width:1200px){
+  .testimonials-container{
+    margin: 3rem 2rem;
+  }
+  .testimonials-heading{
+    font-size: 2.5rem;
+  }
+  .testimonial-content{
+    font-size: 1.5rem;
+  }
+  .testimonial{
+    align-self: center;
+  }
+}
+@media screen and (max-width:600px) {
+  .testimonials-list{
+    grid-template-columns: auto;
+  }
+  .testimonial{
+    margin: 2rem 1rem;
+  }
+  .testimonial-content{
+    font-size: 1rem;
+  }
+}
+
+/* --------------------------------------------------------- music promos --------------------------------------------------------- */
+
+#music-promos{
+  background-color: #1F1F30;
+}
+.music-promos-container{
+  margin: 5rem 15rem;
+  text-align: center;
+}
+.music-promos-heading{
+  font-size: 4rem;
+}
+.promos{
+  display: flex;
+  justify-content: center;
+}
+.promo{
+  width: 25rem;
+  text-align: center;
+  padding: 3rem;
+}
+.promo img{
+  height: 6rem;
+  width: 24rem;
+}
+.promo-heading{
+  font-size: 1.75rem;
+}
+.promo-content{
+  font-size: 1.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+}
+@media screen and (max-width:1200px) {
+  .music-promos-container{
+    margin: 3rem 5rem;
+  }
+  .music-promos-heading{
+    font-size: 3rem;
+  }
+  .promo{
+    width: 20rem;
+    align-self: center;
+  }
+  .promo img{
+    height: 4rem;
+    width: 16rem;
+  }
+  .promo-heading{
+    font-size: 1.2rem;
+  }
+  .promo-content{
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .music-distro-container{
+    margin: 3rem 1rem;
+  }
+  .music-promos-heading{
+    font-size: 1.8rem;
+  }
+  .promos{
+    flex-direction: column;
+  }
+}
+/* --------------------------------------------------------- socials --------------------------------------------------------- */
+
+#socials{
+  background-color: rgb(0, 189, 189);
+}
+.socials-container{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 25rem;
+}
+.socials-container img{
+  height: 3rem;
+  width: 3rem;
+  padding: 1rem;
+  margin: 1rem;
+  border:.3rem solid #363636;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:1200px) {
+  .socials-container{
+    margin: 2rem 1rem;
+    
+  }
+}
+@media screen and (max-width:600px) {
+  .socials-container img{
+    height: 1rem;
+    width: 1rem;
+    border: .2rem solid #363636
+  }
+}
+
+/* --------------------------------------------------------- links --------------------------------------------------------- */
+
+#links{
+  background-color: rgb(49, 49, 49);
+}
+
+.links-container{
+  margin: 2rem 12rem;
+
+}
+.links-groups{
+    display: flex;
+  justify-content: space-evenly;
+}
+
+.links-img{
+  height: 5rem;
+  filter: white;
+}
+.links-list{
+  display: flex;
+  flex-direction: column;
+  line-height: 2rem;
+}
+.links-list a{
+  text-decoration: none;
+  color: #f2b538;
+}
+.link-footer{
+  text-align: center;
+}
+@media screen and (max-width:1200px) {
+  .links-container{
+    margin: 2rem 5rem;
+  }
+}
+@media screen and (max-width:600px) {
+  .links-container{
+    margin: 2rem 1rem;
+  }
+  .links-groups{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
