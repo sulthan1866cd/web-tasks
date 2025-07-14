@@ -1,0 +1,61 @@
+body {
+  background:linear-gradient(90deg,rgb(224, 255, 255) 70%,rgb(255, 255, 255)30%)
+}
+
+.login-icon {
+  height: 6rem;
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto;
+  height: 100vh;
+}
+
+/* ======================== login heading section =============================================== */
+.login-heading-container {
+  display: block;
+  margin-left: 15rem;
+  width: 50vw;
+}
+.login-heading {
+  font-size: 6rem;
+}
+
+/* ========================== login form section ========================================== */
+.login-form-container {
+  display: block;
+  margin: auto auto;
+}
+.login-form-heading{
+  margin-bottom: 3rem;
+}
+.login-form-content {
+  display: flex;
+  flex-direction: column;
+  margin-right:15rem;
+  box-shadow: 10px 10px 25px 12px lightblue;
+  border-radius: 8px;
+  padding: 5rem;
+  background-color: white;
+}
+
+.login-form-input {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 25vw;
+  margin: 0.4rem 1px;
+}
+.login-form-input input {
+  margin-top: 1rem;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 8px;
+  font-size: 1rem;
+  height: 2rem;
+  padding: 1rem 1rem;
+}

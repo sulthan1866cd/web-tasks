@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CD Banking</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <!-- ----------------------------------------------------- model ----------------------------------------------------- -->
+     <div id="statementModel" class="model">
+       <table id="statement">
+        <tr class="statement-table">
+          <th>Date </th>
+          <th>Description</th>
+          <th>Transaction No</th>
+          <th>Credit / Debit</th>
+          <th>Closing balence</th>
+        </tr>
+        <table id="statement-rows">
+
+        </table>
+        
+
+       </table>
+     </div>
+    <!-- ----------------------------------------------------- navigation ----------------------------------------------------- -->
+    <nav class="nav-bar">
+      <img src="images/CDicon.png" alt="CD" />
+      <button onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- ----------------------------------------------------- main ----------------------------------------------------- -->
+    <div class="main-container">
+      <h1 id="mainHeading" class="roboto-condensed-thick main-heading"></h1>
+      <div class="tabs-container">
+        <!-- ----------------------------------------------------- left column ----------------------------------------------------- -->
+        <ul class="tabs">
+          <li
+            id="accountSummaryTab"
+            class="text-grey tab-link active-tab"
+            onclick="switchTab('accountSummary')"
+          >
+            Account Summary
+          </li>
+          <li
+            id="transferFundTab"
+            class="text-grey tab-link"
+            onclick="switchTab('transferFund')"
+          >
+            Transfer fund
+          </li>
+        </ul>
+        <!-- ----------------------------------------------------- right column ----------------------------------------------------- -->
+        <!-- ===================================================== Account Summary ===================================================== -->
+        <div id="accountSummary" class="tab-content-container active-content">
+          <h1>Account Summary</h1>
+          <details class="sub-tab">
+            <summary onclick="openSubTab('savingsSubTabOpen')">
+              <p><b>Savings Account</b></p>
+              <span>
+                <p class="text-grey">Closing balance:</p>
+                <p id="savingsBalence" class="text-blue"></p>
+                <p id="savingsSubTabOpen" class="sub-tab-open text-grey">^</p>
+              </span>
+            </summary>
+            <div class="sub-tab-content">
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Account No:</b>
+                  <span id="SaccNo" class="text-teal"></span>
+                </div>
+                <div class="m-1">
+                  <b class="text-teal">Name:</b>
+                  <span id="Sname" class="text-teal"></span>
+                </div>
+              </div>
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Branch:</b>
+                  <span id="Sbranch" class="text-teal"></span>
+                </div>
+                <div class="m-1">
+                  <b class="text-teal">IFSC code:</b>
+                  <span id="Sifsc" class="text-teal"></span>
+                </div>
+              </div>
+              <button class="btn btn-teal" onclick="viewStatement('savings')">View statement</button>
+            </div>
+          </details>
+          <!-- ===================================================== Current Account ===================================================== -->
+          <details class="sub-tab">
+            <summary onclick="openSubTab('currentSubTabOpen')">
+              <p><b>Current Account</b></p>
+              <span>
+                <p class="text-grey">Closing balance:</p>
+                <p id="currentBalence" class="text-blue"></p>
+                <p id="currentSubTabOpen" class="sub-tab-open text-grey">^</p>
+              </span>
+            </summary>
+            <div class="sub-tab-content">
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Account No:</b>
+                  <span id="CaccNo" class="text-teal"></span>
+                </div>
+                <div class="m-1">
+                  <b class="text-teal">Name:</b>
+                  <span id="Cname" class="text-teal"></span>
+                </div>
+              </div>
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Branch:</b>
+                  <span id="Cbranch" class="text-teal"></span>
+                </div>
+                <div class="m-1">
+                  <b class="text-teal">IFSC code:</b>
+                  <span id="Cifsc" class="text-teal"></span>
+                </div>
+              </div>
+              <button class="btn btn-teal"onclick="viewStatement('current')">View statement</button>
+            </div>
+          </details>
+          <!-- ===================================================== Credit Account ===================================================== -->
+          <details class="sub-tab">
+            <summary onclick="openSubTab('creditSubTabOpen')">
+              <p><b>Credit Account</b></p>
+              <span>
+                <p class="text-grey">Closing balance:</p>
+                <p id="creditBalence" class="text-blue"></p>
+                <p id="creditSubTabOpen" class="sub-tab-open text-grey">^</p>
+              </span>
+            </summary>
+            <div class="sub-tab-content">
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Card No:</b>
+                  <span id="creditCardNo" class="text-teal"></span>
+                </div>
+                <div class="m-1">
+                  <b class="text-teal">Name:</b>
+                  <span id="creditName" class="text-teal"></span>
+                </div>
+              </div>
+              <div>
+                <div class="m-1">
+                  <b class="text-teal">Type:</b>
+                  <span id="creditType" class="text-teal"></span>
+                </div>
+                <div class="m-1"></div>
+              </div>
+              <button class="btn btn-teal" onclick="viewStatement('credit')">View statement</button>
+            </div>
+          </details>
+        </div>
+        <!-- ----------------------------------------------------- Trasfer Fund ----------------------------------------------------- -->
+        <div id="transferFund" class="tab-content-container">
+          <h1>Transfer Fund</h1>
+          <div class="sub-tab">
+            <table>
+              <tr class="transform-form-pair">
+                <td>Choose an Account</td>
+                <td>
+                  <select name="" id="accountType" place>
+                    <option value="">-Select an account-</option>
+                    <option value="savings">Savings Account</option>
+                    <option value="current">Current Account</option>
+                    <option value="credit">Credit Account</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="transform-form-pair">
+                <td>Beneficiary Account</td>
+                <td>
+                  <select name="" id="beneficiary">
+                    <option value="">-Select a Beneficiary-</option>
+                    <option value="Mark & Spensers">Mark & Spensers</option>
+                    <option value="Kiruba Credit">Kiruba Credit</option>
+                    <option value="Louis Vitton Glasses">
+                      Louis Vitton Glasses
+                    </option>
+                    <option value="Groceris Store Bill">
+                      Groceris Store Bill
+                    </option>
+                    <option value="Kishore Credit">Kishore Credit</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="transform-form-pair">
+                <td>Amount in Rupees</td>
+                <td><input id="ammount" type="number" /></td>
+              </tr>
+              <tr class="transform-form-pair">
+                <td>Remarks</td>
+                <td><textarea id="remarks" type="text"></textarea></td>
+              </tr>
+            </table>
+            <button onclick="resetForm()">reset</button>
+            <button onclick="sendMoney()">send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="home.js"></script>
+</html>
