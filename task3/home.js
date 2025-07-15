@@ -40,6 +40,7 @@ const loadData = (cID) => {
     creditType: "Visa",
     creditName: cID,
   };
+
   accountNumbers = {savings:SavingsAccountSummary['SaccNo'],current:currentAccountSummary['CaccNo'],credit:creditAccountSummary['creditCardNo']}
 
   statement = JSON.parse(localStorage.getItem("statement")) || {
@@ -221,5 +222,7 @@ const sendMoney = () => {
 
 const logout = () => {
   localStorage.removeItem("cID");
+  localStorage.removeItem("balences");
+  localStorage.removeItem("statement");
   window.location.href = "login.html";
 };
