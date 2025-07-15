@@ -24,12 +24,78 @@ body {
 .nav-bar button:hover {
   background-color: rgb(200, 200, 200);
 }
+
+/* -------------------- model ----------------- */
+.model{
+  display: none;
+  justify-content: center;
+  position: absolute;
+  padding-top: 5rem;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.statement{
+  position: absolute;
+  background-color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+  padding: 3rem;
+}
+.statement button{
+  margin-left: 98%;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.7rem;
+  border:1px solid black;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: 900;
+}
+.statement button:hover{
+  background-color: white;
+  color: black;
+}
+.statement-heading-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.statement-heading{
+  font-size: 2rem;
+}
+#statement{
+  border-collapse: collapse;
+}
+.statement-table th{
+border: 2px solid rgb(141, 141, 141);
+padding: 10px;
+margin: 0px;
+text-align: center;
+}
+.statement-table td{
+  color: rgb(0, 65, 65);
+border: 2px solid rgb(141, 141, 141);
+padding: 1rem 3rem;
+margin: 0px;
+text-align: center;
+}
+
 /* ----------------------- main -------------------- */
 .main-container {
   margin: 5rem 10rem;
 }
 .main-heading {
   font-size: 3rem;
+}
+
+#transactionMessage{
+  font-weight: 600;
+  position: fixed;
+  top: 10rem;
+  width: 100vw;
+  text-align: center;
 }
 
 .tabs-container {
@@ -100,24 +166,49 @@ body {
     margin: 1rem 0px;
 }
 
-.transform-form-pair{
-  display: flex;
-  justify-content: space-evenly;
+/* --------------------------------- transer fund -------------------- */
+.transfer-fund-table{
   width: 100%;
+  padding-right: 25rem;
+}
+.transfer-form-pair{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem;
+  font-size: 1.5rem; 
+  color: gray;
+}
+.transfer-form-pair input,select,textarea{
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 8px;
+  background-color: white;
+  color: rgb(58, 58, 58);
+  font-size: 1rem;
+  height: 2rem;
+  width: 25rem;
+  padding: 1rem 1rem;
+}
+.transfer-form-pair td{
+  margin: auto;
+}
+.transfer-form-pair select{
+  width: 27rem;
+  height: 3.5rem;
+}
+.transfer-form-pair textarea{
+  height: 4rem;
+  margin-left: 6rem;
+}
+.transfer-form-buttons{
+  display: flex;
+  justify-content: center;
+}
+.transfer-form-buttons button{
+  margin: 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.statement-table th{
-margin: 3rem;
-border: 2px solid black;
-padding: 10px;
-text-align: center;
-}
-.statement-table td{
-  margin: 3rem;
-border: 2px solid black;
-padding: 1rem 3rem;
-text-align: center;
-}
 #transferFund {
   display: none;
 }

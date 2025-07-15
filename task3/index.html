@@ -6,34 +6,42 @@
     <title>CD Banking</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="home.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@453&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <!-- ----------------------------------------------------- model ----------------------------------------------------- -->
-     <div id="statementModel" class="model">
-       <table id="statement">
-        <tr class="statement-table">
-          <th>Date </th>
-          <th>Description</th>
-          <th>Transaction No</th>
-          <th>Credit / Debit</th>
-          <th>Closing balence</th>
-        </tr>
-        <table id="statement-rows">
-
-        </table>
-        
-
-       </table>
-     </div>
     <!-- ----------------------------------------------------- navigation ----------------------------------------------------- -->
     <nav class="nav-bar">
       <img src="images/CDicon.png" alt="CD" />
       <button onclick="logout()">Logout</button>
     </nav>
-
+    <!-- -----------------------------------------------------statement model ----------------------------------------------------- -->
+    <div id="statementModel" class="model">
+      <div class="statement">
+        <button onclick="closeStatement()">X</button>
+        <div class="statement-heading-container">
+          <span class="roboto-condensed-thick statement-heading">Statement</span>
+          <span id="statementAccountNumber"></span>
+        </div>
+        <table id="statement">
+          <tr class="statement-table">
+            <th>Date</th>
+            <th>Description</th>
+            <th>Transaction No</th>
+            <th>Credit / Debit</th>
+            <th>Closing balence</th>
+          </tr>
+        </table>
+      </div>
+    </div>
     <!-- ----------------------------------------------------- main ----------------------------------------------------- -->
     <div class="main-container">
       <h1 id="mainHeading" class="roboto-condensed-thick main-heading"></h1>
+      <p class="text-orange" id="transactionMessage"></p>
       <div class="tabs-container">
         <!-- ----------------------------------------------------- left column ----------------------------------------------------- -->
         <ul class="tabs">
@@ -86,7 +94,9 @@
                   <span id="Sifsc" class="text-teal"></span>
                 </div>
               </div>
-              <button class="btn btn-teal" onclick="viewStatement('savings')">View statement</button>
+              <button class="btn btn-teal" onclick="viewStatement('savings')">
+                View statement
+              </button>
             </div>
           </details>
           <!-- ===================================================== Current Account ===================================================== -->
@@ -120,7 +130,9 @@
                   <span id="Cifsc" class="text-teal"></span>
                 </div>
               </div>
-              <button class="btn btn-teal"onclick="viewStatement('current')">View statement</button>
+              <button class="btn btn-teal" onclick="viewStatement('current')">
+                View statement
+              </button>
             </div>
           </details>
           <!-- ===================================================== Credit Account ===================================================== -->
@@ -151,7 +163,9 @@
                 </div>
                 <div class="m-1"></div>
               </div>
-              <button class="btn btn-teal" onclick="viewStatement('credit')">View statement</button>
+              <button class="btn btn-teal" onclick="viewStatement('credit')">
+                View statement
+              </button>
             </div>
           </details>
         </div>
@@ -159,11 +173,11 @@
         <div id="transferFund" class="tab-content-container">
           <h1>Transfer Fund</h1>
           <div class="sub-tab">
-            <table>
-              <tr class="transform-form-pair">
+            <table class="transfer-fund-table">
+              <tr class="transfer-form-pair">
                 <td>Choose an Account</td>
                 <td>
-                  <select name="" id="accountType" place>
+                  <select id="accountType" place>
                     <option value="">-Select an account-</option>
                     <option value="savings">Savings Account</option>
                     <option value="current">Current Account</option>
@@ -171,10 +185,10 @@
                   </select>
                 </td>
               </tr>
-              <tr class="transform-form-pair">
+              <tr class="transfer-form-pair">
                 <td>Beneficiary Account</td>
                 <td>
-                  <select name="" id="beneficiary">
+                  <select id="beneficiary">
                     <option value="">-Select a Beneficiary-</option>
                     <option value="Mark & Spensers">Mark & Spensers</option>
                     <option value="Kiruba Credit">Kiruba Credit</option>
@@ -188,17 +202,19 @@
                   </select>
                 </td>
               </tr>
-              <tr class="transform-form-pair">
+              <tr class="transfer-form-pair">
                 <td>Amount in Rupees</td>
                 <td><input id="ammount" type="number" /></td>
               </tr>
-              <tr class="transform-form-pair">
+              <tr class="transfer-form-pair">
                 <td>Remarks</td>
                 <td><textarea id="remarks" type="text"></textarea></td>
               </tr>
-            </table>
-            <button onclick="resetForm()">reset</button>
-            <button onclick="sendMoney()">send</button>
+            </table><div class="transfer-form-buttons">
+              
+              <button class="btn" onclick="resetForm()">reset</button>
+              <button class="btn btn-teal" onclick="sendMoney()">send</button>
+            </div>
           </div>
         </div>
       </div>

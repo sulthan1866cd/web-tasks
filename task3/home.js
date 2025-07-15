@@ -11,18 +11,17 @@ var balences = {
   currentBalence: "24583.00",
   creditBalence: "16792.10",
 };
-document.addEventListener("DOMContentLoaded", () => {
-  let cID = localStorage.getItem("cID");
-  if (!cID) window.location.href = "login.html";
 
-  const mainHeading = document.getElementById("mainHeading");
-  mainHeading.textContent = "Greetings " + cID + "!";
+var accountNumbers;
 
-  balences = JSON.parse(localStorage.getItem("balences")) || {
-    savingsBalence: "20000.50",
-    currentBalence: "24583.00",
-    creditBalence: "16792.10",
-  };
+const addDetailstoID = (details) => {
+  for (const detail in details) {
+    const element = document.getElementById(detail);
+    element.textContent = details[detail];
+  }
+};
+
+const loadData = (cID) => {
   const SavingsAccountSummary = {
     SaccNo: 786543092,
     Sbranch: "Ashok Nagar",
@@ -36,8 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
     Cifsc: "CDBL0009",
   };
 
+  const creditAccountSummary = {
+    creditCardNo: "XXXX XXXX XXXX 1225",
+    creditType: "Visa",
+    creditName: cID,
+  };
+  accountNumbers = {savings:SavingsAccountSummary['SaccNo'],current:currentAccountSummary['CaccNo'],credit:creditAccountSummary['creditCardNo']}
+
   statement = JSON.parse(localStorage.getItem("statement")) || {
-    accountType:[],
+    accountType: [],
     Date: [],
     Description: [],
     TransactionNo: [],
@@ -45,27 +51,34 @@ document.addEventListener("DOMContentLoaded", () => {
     Closingbalence: [],
   };
 
-  const creditAccountSummary = {
-    creditCardNo: "XXXX XXXX XXXX 1225",
-    creditType: "Visa",
-    creditName: cID,
-  };
-  const addDetailstoID = (details) => {
-    for (const detail in details) {
-      const element = document.getElementById(detail);
-      element.textContent = details[detail];
-    }
-  };
-  addDetailstoID(balences);
   addDetailstoID(SavingsAccountSummary);
   addDetailstoID(currentAccountSummary);
   addDetailstoID(creditAccountSummary);
-});
-
-const logout = () => {
-  localStorage.removeItem("cID");
-  window.location.href = "login.html";
 };
+
+const loadBalances = () => {
+  balences = JSON.parse(localStorage.getItem("balences")) || {
+    savingsBalence: "20000.50",
+    currentBalence: "24583.00",
+    creditBalence: "16792.10",
+  };
+  let formattedBalence = {}
+  for(const accountType in balences){
+    formattedBalence[accountType] = Number(balences[accountType]).toLocaleString();
+  }
+  addDetailstoID(formattedBalence);
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  let cID = localStorage.getItem("cID");
+  if (!cID) window.location.href = "login.html";
+
+  const mainHeading = document.getElementById("mainHeading");
+  mainHeading.textContent = "Greetings " + cID + "!";
+
+  loadData(cID);
+  loadBalances();
+});
 
 const switchTab = (tabID) => {
   const activeContent = document.getElementsByClassName("active-content");
@@ -94,10 +107,23 @@ const openSubTab = (subTabOpenID) => {
 };
 
 const viewStatement = (accountType) => {
-  const statementElement = document.getElementById("statement-rows");
-  statementElement.replaceChildren()
-  for (let ind = 0; ind < statement["Date"].length; ind++) {
-    console.log(statement['accountType']+ " "+accountType)
+
+  const statementModelElement = document.getElementById('statementModel')
+  statementModelElement.style.display='flex'
+
+  const accountNumberElement = document.getElementById(
+    "statementAccountNumber"
+  );
+  accountNumberElement.textContent = `Account No: ${accountNumbers[accountType]}`;
+
+  const statementElement = document.getElementById("statement");
+
+  while(statementElement.childNodes.length>2){
+    statementElement.removeChild(statementElement.lastChild);
+  }
+
+  for (let ind = statement["Date"].length - 1; ind >= 0; ind--) {
+    console.log(statement["accountType"] + " " + accountType);
     if (statement["accountType"][ind] !== accountType) continue;
 
     const tr = document.createElement("tr");
@@ -112,6 +138,11 @@ const viewStatement = (accountType) => {
   }
 };
 
+const closeStatement = ()=>{
+  const statementModelElement = document.getElementById('statementModel')
+  statementModelElement.style.display='none'
+}
+
 const resetForm = () => {
   const accountElement = document.getElementById("accountType");
   const beneficiaryElement = document.getElementById("beneficiary");
@@ -123,15 +154,49 @@ const resetForm = () => {
   remarksElement.value = "";
 };
 
+const showMessage = (message) => {
+  const showMessageElement = document.getElementById("transactionMessage");
+  showMessageElement.textContent = message;
+
+  setTimeout(() => {
+    showMessageElement.textContent = "";
+  }, 4000);
+};
+
 const sendMoney = () => {
   const accountElement = document.getElementById("accountType");
   const beneficiaryElement = document.getElementById("beneficiary");
   const ammountElement = document.getElementById("ammount");
-  const remarksElement = document.getElementById("remarks");
+  // const remarksElement = document.getElementById("remarks");
   const account = accountElement.value;
   const beneficiary = beneficiaryElement.value;
   const ammount = ammountElement.value;
-  const remarks = remarksElement.value;
+  // const remarks = remarksElement.value;
+
+  if(account===''){
+    showMessage("Please choose an account")
+    return
+  }
+  if(beneficiary===''){
+     showMessage("Please choose an beneficiary")
+    return
+  }
+
+  if (isNaN(ammount) || Number(ammount) <= 0) {
+    showMessage(
+      `Can't transfer ammount ${ammount}, please enter amount value greater than 0`
+    );
+    return;
+  }
+  if (Number(balences[account + "Balence"]) < Number(ammount)) {
+    showMessage(
+      `Transfer of Rs. ${Number(ammount)} from your ${account} account has failed fue to insufficiant balence! cuttent balence: ${
+        balences[account + "Balence"]
+      }`
+    );
+    return;
+  }
+
   // console.log(statement);
   statement["accountType"].push(account);
   statement["Date"].push(new Date(Date.now()).toISOString().slice(0, 10));
@@ -145,4 +210,16 @@ const sendMoney = () => {
 
   localStorage.setItem("balences", JSON.stringify(balences));
   localStorage.setItem("statement", JSON.stringify(statement));
+  resetForm();
+  loadBalances();
+  showMessage(
+    `Transfer of Rs. ${
+      ammount
+    } from your ${account} account is successful!`
+  );
+};
+
+const logout = () => {
+  localStorage.removeItem("cID");
+  window.location.href = "login.html";
 };
