@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CD Banking - login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@453&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img class="login-icon" src="images/CDicon.png" alt="CD" />
+    <div class="login-container">
+      <section class="login-heading-container">
+        <h1 class="roboto-condensed-thick login-heading text-teal">
+          Welcome to <br><span class="text-orange">Crystal Delta</span><br> Banking
+        </h1>
+      </section>
+
+      <section class="login-form-container">
+        <div class="login-form-content">
+          <h3 class="text-teal login-form-heading"><b>Login to your account</b></h3>
+          <div class="login-form-input">
+            <label for="" class="text-teal">Customer ID</label>
+            <input type="text" id="cID" />
+            <p class="text-red" id="cIDMessage"></p>
+          </div>
+
+          <div class="login-form-input">
+            <label for="" class="text-teal">Password</label>
+            <input type="password" id="password" />
+            <p class="text-red" id="passwordMessage"></p>
+          </div>
+          <button type="button" class="btn btn-teal" onclick="validate()">
+            <h3>Login</h3>
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script src="login.js"></script>
+</html>
