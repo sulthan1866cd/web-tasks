@@ -14,7 +14,7 @@ const validate = () => {
     return;
   }
   localStorage.setItem("cID", cID);
-  window.location.href = "index.html";
+  window.location.href = "/";
 };
 
 document.addEventListener("keypress", (event) => {
