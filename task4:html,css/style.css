@@ -1,0 +1,98 @@
+body {
+  margin: 0px;
+  padding-top: 4rem;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  width: 100vw;
+  height: 4rem;
+  padding: 0.8rem 3rem;
+}
+.nav-bar img {
+  height: 4rem;
+}
+.nav-bar a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+
+.nav-items {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5rem;
+  margin-right: 10rem;
+}
+.nav-item {
+  position: relative;
+}
+.nav-item > a:hover {
+  color: blue;
+}
+.nav-item:hover .container {
+  display: block;
+}
+.nav-item:hover > .sub-nav {
+  display: block;
+}
+.sub-nav {
+  display: none;
+  position: absolute;
+  background-color: rgb(56, 56, 56);
+  width: 10rem;
+  border-radius: 10px;
+  right: 1rem;
+}
+.sub-nav a {
+  height: 2.5rem;
+  text-align: center;
+  padding-top: 1rem;
+  border-radius: 10px;
+}
+.sub-nav a:hover {
+  background-color: gray;
+}
+
+.sub-nav-item:hover > .sub-nav > .sub-container {
+  display: block;
+}
+.sub-nav:hover > .container {
+  display: none;
+}
+.nav-item .nav-item:hover > a {
+  color: chartreuse;
+}
+.sub-nav-item > .sub-nav {
+  top: 1rem;
+  right: 100%;
+}
+.sub-nav-item > .sub-nav:hover > .sub-container {
+  display: none;
+}
+
+.sub-nav-item > .sub-nav > .sub-nav-item:hover > .sub-container {
+  display: block;
+}
+.container,
+.sub-container {
+  position: absolute;
+  top: 50vh;
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .nav-items {
+    padding-left: 3rem;
+    margin-right: 5rem;
+    gap: 2rem;
+  }
+  .sub-nav {
+    width: 6rem;
+  }
+}
