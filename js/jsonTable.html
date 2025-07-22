@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Json Placeholder table</title>
+  </head>
+  <link rel="stylesheet" href="jasonTable.css">
+  <body>
+    <div class="header">
+      <button class="btn" onclick="sortOnClick(this)">sort ↓</button>
+      <label for="searchBar">Search: <input id="searchBar" type="text" onkeypress="filter(event)" placeholder="Search somthing"></label>
+    </div>
+    <div class="table-container">
+        <table id="table" class="table">
+          <tr>
+            <th>userid</th>
+            <th>id</th>
+            <th>title</th>
+            <th>completed</th>
+          </tr>
+        </table>
+    </div>
+    <div id="pagination" class="pagination">
+
+    </div>
+  </body>
+  <script src="jsonTable.js"></script>
+</html>

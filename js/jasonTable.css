@@ -1,0 +1,39 @@
+.btn{
+    cursor: pointer;
+    margin: 0.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid blue;
+    border-radius: 8px;
+    background-color: lightblue;
+}
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem;
+}
+.header input{
+    height: 2rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+}
+.table{
+    width: 50%;
+    border-collapse: collapse;
+    margin: 3rem;
+}
+
+.table tr>th , .table>tr>td{
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
