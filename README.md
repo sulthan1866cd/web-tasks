@@ -13,3 +13,11 @@
 ## task 4: nav_bar
 - Tech used: HTML, CSS
 - A nav bar with nested menus and content appear on hovering menu items
+
+## task 5: js
+### json placeholder tabele
+- fetched array of jsons form jsonplaceholder api and dynamically created table with js
+- added fetures like search, sort, pagition for the table data
+
+### ajax 
+- fetch new user detail every time when user clicks a button and rendering on web page without reloading the page
